@@ -1,6 +1,8 @@
 import "remixicon/fonts/remixicon.css";
 import { useState, useRef, useEffect } from "react";
 import { gsap } from "gsap";
+import { useAuth } from "../../context/AuthContext";
+import { LoginSignupModal } from "../Auth/LoginSignupModal";
 import "./NavBar.css";
 
 export const Navbar = () => {
@@ -8,6 +10,9 @@ export const Navbar = () => {
   const drawerRef = useRef(null);
   const linksRef = useRef([]);
   const animationRef = useRef(null);
+  
+  const { currentUser, logout } = useAuth();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Function to handle smooth scroll to top
   const scrollToTop = () => {
@@ -75,17 +80,27 @@ export const Navbar = () => {
           </div>
           
           <ul className="nav-items">
-            <li><a href="#" onClick={scrollToTop}>Home</a></li>
-            <li><a href="#rent">rent</a></li>
-            <li><a href="#services">Services</a></li>
+            <li><a href="/" onClick={scrollToTop}>Home</a></li>
+            <li><a href="/#rent">Rent</a></li>
+            <li><a href="/#services">Services</a></li>
             {/* Redirects to an external About page or a new route */}
             <li><a href="/about-us">About Us</a></li> 
             <li><a href="#" onClick={openWhatsApp}><i className="ri-whatsapp-line"></i> WhatsApp</a></li>
+            {currentUser && <li><a href="/my-bookings">My Bookings</a></li>}
           </ul>
 
           <div className="auth-buttons">
-            <a href="#" className="btn btn-border">Sign In</a>
-            <a href="#" className="btn btn-gradient">Create Account</a>
+            {currentUser ? (
+              <>
+                <span style={{ marginRight: '15px', color: 'gray' }}>Hi, {currentUser.email.split('@')[0]}</span>
+                <a href="#" className="btn btn-border" onClick={logout}>Logout</a>
+              </>
+            ) : (
+              <>
+                <a href="#" className="btn btn-border" onClick={() => setIsModalOpen(true)}>Sign In</a>
+                <a href="#" className="btn btn-gradient" onClick={() => setIsModalOpen(true)}>Create Account</a>
+              </>
+            )}
           </div>
 
           <div className="mobile-menu">
@@ -127,6 +142,7 @@ export const Navbar = () => {
           </div>
         )}
       </div>
+      <LoginSignupModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </nav>
   );
 };

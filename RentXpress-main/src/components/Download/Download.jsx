@@ -31,7 +31,7 @@ export const Download = () => {
     <section className="download" id="contact">
       <div className="left-text">
         <div className="only-text">
-          <h2>Download the free RentXpress app</h2>
+          <h2>Download the free Rahi Travels app</h2>
           <p>for faster, easier booking and exclusive deals.</p>
         </div>
         <div className="app-links">

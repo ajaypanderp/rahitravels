@@ -1,11 +1,13 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import "./HeroSection.css";
 import appleImage from "../../assets/Apple.png";
 import playStoreImage from "../../assets/PlayStore.png";
 import CarImage from "../../assets/HeroCar.png";
+import { BookingModal } from "../Booking/BookingModal";
 
 export const HeroSection = () => {
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
   // Refs for the text section and the image container
   const textRef = useRef(null);
   const imageRef = useRef(null);
@@ -32,12 +34,18 @@ export const HeroSection = () => {
           Drive your <span>Dream Car</span> Today
         </h1>
         <p>
-          Rent the perfect car for any trip with Rahi Travels. Enjoy flexible
+          Rent the perfect car for traveling to places like Ayodhya, Banaras, Chitrakoot, and more with Rahi Travels. Enjoy flexible
           options, great prices, and a hassle-free experience. Get started in a
           few clicks!
         </p>
+        <button 
+          className="book-now-btn" 
+          onClick={() => setIsBookingOpen(true)}
+        >
+          Book Your Ride
+        </button>
 
-        <div className="app-links">
+        <div className="app-links" style={{marginTop: '20px'}}>
           <button className="app-btn">
             <div className="app-logo">
               <img src={appleImage} alt="Apple" />
@@ -61,9 +69,10 @@ export const HeroSection = () => {
       </section>
 
       <section className="hero-image-container" >
-        <div className="orange-box"></div>
+        <div className="blue-box"></div>
         <img ref={imageRef} src={CarImage} alt="Car" className="car-image" />
       </section>
+      <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
     </main>
   );
 };

@@ -7,7 +7,7 @@
 
 :root {
   --icon-bg: #eeeff1;
-  --brand-color: #fe5d3d;
+  --brand-color: #2563eb;
 }
 
 /* Section Layout */
@@ -34,7 +34,7 @@
 }
 
 .heading h3 span {
-  background: linear-gradient(to right, #ff8971, #fa2a00);
+  background: linear-gradient(to right, #60a5fa, #2563eb);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -97,7 +97,7 @@
 }
 
 .step2 .icon {
-  background: linear-gradient(to bottom, #ff4502, #ffb325);
+  background: linear-gradient(to bottom, #2563eb, #60a5fa);
   border: 2px solid white;
 }
 
@@ -111,8 +111,8 @@
   height: 2px;
   background: repeating-linear-gradient(
     to right,
-    orange,
-    rgb(255, 133, 33) 5px,
+    #3b82f6,
+    #60a5fa 5px,
     transparent 5px,
     transparent 10px
   );
@@ -172,8 +172,8 @@
     height: 100px;
     background: repeating-linear-gradient(
       to bottom,
-      orange,
-      rgb(255, 133, 33) 5px,
+      #3b82f6,
+      #60a5fa 5px,
       transparent 5px,
       transparent 10px
     );

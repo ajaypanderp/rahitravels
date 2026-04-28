@@ -47,7 +47,7 @@ export const Footer = () => {
       <div className="footer-line"></div>
 
       <div className="footer-bottom">
-        <p>RentXpress &copy; 2024</p>
+        <p>Rahi Travels &copy; 2024</p>
         <a href="https://bento.me/ksr" target="_blank">
           <p className="my-name">
             <i className="ri-sparkling-2-fill"></i> Kishore S R
